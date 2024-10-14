@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp77mr4njrla5"]
+
+[ext_resource type="Texture2D" uid="uid://dr38bbt88q06l" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_009.png" id="1_snes8"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2(65, 45)
+polygon = PackedVector2Array(-11, -21, -1, -21, 1, -15, 2, -7, 5, -4, 5, 5, 3, 8, 8, 6, 24, 6, 24, 14, 12, 14, 8, 20, 2, 22, -10, 22, -17, 16, -22, 13, -25, 1, -22, -12, -15, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionPolygon2D"]
+texture = ExtResource("1_snes8")
