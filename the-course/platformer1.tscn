@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://m6iyidf45gq1"]
+
+[ext_resource type="Texture2D" uid="uid://c045w642y0q5b" path="res://assets/PNG/Sprites X2/Building/spaceBuilding_001.png" id="1_qgon1"]
+[ext_resource type="Script" path="res://jumpgirl.gd" id="2_5kjge"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_35djv"]
+[ext_resource type="Script" path="res://coin.gd" id="4_icj5v"]
+[ext_resource type="Texture2D" uid="uid://csfstyjj1bcb6" path="res://sprites/bomb.png" id="5_qe5lc"]
+[ext_resource type="Script" path="res://enemygirl.gd" id="6_vg0oo"]
+[ext_resource type="Texture2D" uid="uid://k3di1n4vf06d" path="res://assets/PNG/Sprites X2/Meteors/spaceMeteors_002.png" id="7_dhd5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kupb3"]
+size = Vector2(104, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eo8i"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x44al"]
+size = Vector2(14, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xw3f"]
+radius = 226.614
+
+[node name="Node2D" type="Node2D"]
+
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2(224, 623)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform"]
+position = Vector2(3.8147e-06, -0.500004)
+scale = Vector2(1.2619, 1.20238)
+texture = ExtResource("1_qgon1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+shape = SubResource("RectangleShape2D_kupb3")
+
+[node name="platform2" type="StaticBody2D" parent="."]
+position = Vector2(330, 591)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform2"]
+position = Vector2(3.8147e-06, -0.500004)
+scale = Vector2(1.2619, 1.20238)
+texture = ExtResource("1_qgon1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
+shape = SubResource("RectangleShape2D_kupb3")
+
+[node name="platform3" type="StaticBody2D" parent="."]
+position = Vector2(436, 623)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform3"]
+position = Vector2(3.8147e-06, -0.500004)
+scale = Vector2(1.2619, 1.20238)
+texture = ExtResource("1_qgon1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform3"]
+shape = SubResource("RectangleShape2D_kupb3")
+
+[node name="platform4" type="StaticBody2D" parent="."]
+position = Vector2(542, 650)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform4"]
+position = Vector2(3.8147e-06, -0.500004)
+scale = Vector2(1.2619, 1.20238)
+texture = ExtResource("1_qgon1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform4"]
+shape = SubResource("RectangleShape2D_kupb3")
+
+[node name="platform5" type="StaticBody2D" parent="."]
+position = Vector2(648, 650)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform5"]
+position = Vector2(3.8147e-06, -0.500004)
+scale = Vector2(1.2619, 1.20238)
+texture = ExtResource("1_qgon1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform5"]
+shape = SubResource("RectangleShape2D_kupb3")
+
+[node name="jumpgirl" type="CharacterBody2D" parent="."]
+position = Vector2(200, 553)
+script = ExtResource("2_5kjge")
+
+[node name="Sprite2D" type="Sprite2D" parent="jumpgirl"]
+texture = ExtResource("3_35djv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpgirl"]
+shape = SubResource("RectangleShape2D_4eo8i")
+
+[node name="coin" type="Area2D" parent="."]
+position = Vector2(439, 553)
+script = ExtResource("4_icj5v")
+
+[node name="Sprite2D" type="Sprite2D" parent="coin"]
+texture = ExtResource("5_qe5lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin"]
+shape = SubResource("RectangleShape2D_x44al")
+
+[node name="enemygirl" type="CharacterBody2D" parent="."]
+position = Vector2(631, 547)
+script = ExtResource("6_vg0oo")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemygirl"]
+scale = Vector2(0.209397, 0.234597)
+texture = ExtResource("7_dhd5o")
+
+[node name="Area2D" type="Area2D" parent="enemygirl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemygirl/Area2D"]
+shape = SubResource("CircleShape2D_4xw3f")
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="body_entered" from="enemygirl/Area2D" to="enemygirl" method="_on_area_2d_body_entered"]

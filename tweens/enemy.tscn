@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://nlmmicyyuop2"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_h420v"]
+[ext_resource type="Script" path="res://enemy_2.gd" id="2_n47vi"]
+
+[node name="enemy" type="Node2D"]
+position = Vector2(508, 277)
+script = ExtResource("1_h420v")
+
+[node name="enemy2" type="Node2D" parent="."]
+position = Vector2(-252, 20)
+script = ExtResource("2_n47vi")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(91, 25)
