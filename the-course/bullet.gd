@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+extends Area2D
+
+@export var Bullet : PackedScene
+
+var speed = 750
+
+func _physics_process(delta):
+	position += transform.x * speed * delta
+
+func _on_Bullet_body_entered(body):
+	if body.is_in_group("mobs"):
+		body.queue_free()
+	queue_free()
+	if Input.is_action_just_pressed("shoot"):
+		shoot():
+		func shoot():
+	var b = Bullet.instance()
+	add_child(b)
+	b.transform = $Muzzle.transform
+	
+=======
 extends CharacterBody2D
 
 @export var speed = 20
@@ -21,3 +43,4 @@ func _process(delta):
 func _on_timer_timeout():
 	self.queue_free()
 	pass # Replace with function body.
+>>>>>>> bb5f40e80b73069e85d7ffc68436e713392cb601

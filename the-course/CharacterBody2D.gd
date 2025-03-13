@@ -1,5 +1,19 @@
 extends CharacterBody2D
 
+<<<<<<< HEAD
+@export var speed = 200
+@export var rotation_speed = 1.5
+
+var rotation_direction = 0
+
+func get_input():
+	rotation_direction = Input.get_axis("left", "right")
+	velocity = transform.x * Input.get_axis("down", "up") * speed
+
+func _physics_process(delta):
+	get_input()
+	rotation += rotation_direction * rotation_speed * delta
+=======
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,4 +39,5 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+>>>>>>> bb5f40e80b73069e85d7ffc68436e713392cb601
 	move_and_slide()

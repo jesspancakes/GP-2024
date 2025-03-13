@@ -1,6 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cclp2idnd7odb"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://trail.gd" id="1_aoacd"]
+=======
+[ext_resource type="Script" uid="uid://55vmvw36rgvr" path="res://trail.gd" id="1_aoacd"]
+>>>>>>> 94a4982f0cedb7f8377bd6a02c0d27d115fe11f4
 
 [sub_resource type="Curve" id="Curve_qj4sw"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

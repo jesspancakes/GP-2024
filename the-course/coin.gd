@@ -12,7 +12,11 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+<<<<<<< HEAD
 	if body.name == "jumpgirl":
+=======
+	if body.name == "jump_dude":
+>>>>>>> 94a4982f0cedb7f8377bd6a02c0d27d115fe11f4
 		body.score = body.score + 1
 		self.queue_free()
 	pass # Replace with function body.
