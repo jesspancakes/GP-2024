@@ -2,10 +2,12 @@ extends Node3D
 
 @export var score = 0
 @export var speed:float = 10
-@export var rot_speed =0.5
+@export var rot_speed = 0.5 
 var controlling = true
 
 var relative:Vector2 = Vector2.ZERO
+
+@export var ammo = 0
 
 func _input(event):
 	if event is InputEventMouseMotion and controlling:
@@ -28,6 +30,9 @@ func _ready():
 func _process(delta):
 	rotate(Vector3.DOWN, deg_to_rad(relative.x * deg_to_rad(rot_speed) * delta))
 	rotate(transform.basis.x,deg_to_rad(- relative.y * deg_to_rad(rot_speed) * delta))
+	
+	$"../Label".text = "ammo:" + str(ammo)
+	
 	relative = Vector2.ZERO
 	if can_move:
 		var v = Vector3.ZERO

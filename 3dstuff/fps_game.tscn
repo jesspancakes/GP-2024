@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvll07vn0010d"]
+[gd_scene load_steps=13 format=3 uid="uid://dvll07vn0010d"]
 
 [ext_resource type="Script" path="res://fps_girl.gd" id="1_nfnii"]
+[ext_resource type="Script" path="res://ammo_girl.gd" id="2_cipab"]
+[ext_resource type="Script" path="res://fps_cube.gd" id="2_flylt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_737j4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -12,8 +14,11 @@ sky_material = SubResource("ProceduralSkyMaterial_737j4")
 [sub_resource type="Environment" id="Environment_ll1j6"]
 background_mode = 2
 sky = SubResource("Sky_ggkse")
+ambient_light_color = Color(0.937255, 0.937255, 0.439216, 1)
 tonemap_mode = 2
 glow_enabled = true
+glow_intensity = 0.63
+fog_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x8ru"]
 albedo_color = Color(0.87451, 0.564706, 0.992157, 1)
@@ -26,9 +31,18 @@ size = Vector2(100, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nwrby"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3280"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_mytxy"]
 
 [node name="fps_game" type="Node3D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 44.0
+text = "ammo: 0"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ll1j6")
@@ -43,17 +57,30 @@ shadow_enabled = true
 mesh = SubResource("PlaneMesh_hxtbq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_2m27p")
 
 [node name="fps_girl" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340716, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25313, 12.0891)
 script = ExtResource("1_nfnii")
+rot_speed = 180.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fps_girl"]
 shape = SubResource("CapsuleShape3D_nwrby")
 
 [node name="Camera3D" type="Camera3D" parent="fps_girl"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55492, 0.875173, -7.578)
+[node name="ammo" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0138, 0)
+script = ExtResource("2_cipab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ammo"]
+shape = SubResource("BoxShape3D_p3280")
+
+[node name="cube" type="MeshInstance3D" parent="ammo"]
 mesh = SubResource("BoxMesh_mytxy")
+skeleton = NodePath("../..")
+script = ExtResource("2_flylt")
+rot_speed = 180
+
+[connection signal="body_entered" from="ammo" to="ammo" method="_on_body_entered"]
