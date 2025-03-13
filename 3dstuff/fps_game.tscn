@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvll07vn0010d"]
+[gd_scene load_steps=14 format=3 uid="uid://dvll07vn0010d"]
 
 [ext_resource type="Script" path="res://fps_girl.gd" id="1_nfnii"]
 [ext_resource type="Script" path="res://ammo_girl.gd" id="2_cipab"]
 [ext_resource type="Script" path="res://fps_cube.gd" id="2_flylt"]
+[ext_resource type="PackedScene" uid="uid://b528cq4xt7dx3" path="res://gun.tscn" id="2_jy6yw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_737j4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -70,13 +71,7 @@ shape = SubResource("CapsuleShape3D_nwrby")
 
 [node name="Camera3D" type="Camera3D" parent="fps_girl"]
 
-[node name="gun" type="CSGBox3D" parent="fps_girl/Camera3D"]
-transform = Transform3D(-0.146446, 0, -0.989219, 0, 1, 0, 0.989219, 0, -0.146446, -0.289844, -0.143501, -0.398685)
-size = Vector3(0.362061, 0.0201016, 0.01)
-
-[node name="gun" type="CSGBox3D" parent="fps_girl/Camera3D/gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181656, -0.0149941, 5.85318e-05)
-size = Vector3(0.01, 0.05, 0.01)
+[node name="gun" parent="fps_girl/Camera3D" instance=ExtResource("2_jy6yw")]
 
 [node name="ammo" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0138, 0)
