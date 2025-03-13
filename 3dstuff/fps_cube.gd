@@ -16,5 +16,4 @@ func _process(delta: float) -> void:
 	#global_position.x += delta * speed
 	
 	rotate_y(deg_to_rad(rot_speed) * delta)
-	
 	pass

@@ -32,7 +32,6 @@ func _process(delta):
 	rotate(transform.basis.x,deg_to_rad(- relative.y * deg_to_rad(rot_speed) * delta))
 	
 	$"../Label".text = "ammo:" + str(ammo)
-	
 	relative = Vector2.ZERO
 	if can_move:
 		var v = Vector3.ZERO

@@ -70,6 +70,14 @@ shape = SubResource("CapsuleShape3D_nwrby")
 
 [node name="Camera3D" type="Camera3D" parent="fps_girl"]
 
+[node name="gun" type="CSGBox3D" parent="fps_girl/Camera3D"]
+transform = Transform3D(-0.146446, 0, -0.989219, 0, 1, 0, 0.989219, 0, -0.146446, -0.289844, -0.143501, -0.398685)
+size = Vector3(0.362061, 0.0201016, 0.01)
+
+[node name="gun" type="CSGBox3D" parent="fps_girl/Camera3D/gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181656, -0.0149941, 5.85318e-05)
+size = Vector3(0.01, 0.05, 0.01)
+
 [node name="ammo" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0138, 0)
 script = ExtResource("2_cipab")
@@ -82,5 +90,31 @@ mesh = SubResource("BoxMesh_mytxy")
 skeleton = NodePath("../..")
 script = ExtResource("2_flylt")
 rot_speed = 180
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2432, 0.979517, -3.08654)
+use_collision = true
+size = Vector3(4, 4, 0.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2432, 0.979517, 0.412325)
+use_collision = true
+size = Vector3(4, 4, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.4924, 0.979517, -1.35324)
+use_collision = true
+size = Vector3(4, 4, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.99364, 0.979517, -1.34245)
+use_collision = true
+size = Vector3(4, 4, 0.5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.98957, 1.74228, -1.34245)
+operation = 2
+use_collision = true
+size = Vector3(1, 1, 0.5)
 
 [connection signal="body_entered" from="ammo" to="ammo" method="_on_body_entered"]
